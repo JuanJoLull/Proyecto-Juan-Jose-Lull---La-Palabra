@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LA PALABRA</title>
+</head>
+
+<body>
+<!--Titulo y botones-->
+<div style="padding: 25px" fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="15px">
+  <div class="titulo">
+    <h1>LA PALABRA</h1></div>
+  <div class="nombre" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15px">
+    <div class="botones" fxLayout="row" fxLayoutGap="15px">
+      <button class='btn btn-primary' id="nuevaPartida"
+              (click)="openNameModal()">NUEVA PARTIDA
+      </button>
+
+      <button class='btn btn-primary' id="resultados"
+              (click)="openJugModal()">VER RESULTADOS
+      </button>
+    </div>
+  </div>
+</div>
+<!--Modal del boton de Nueva Partida, donde se introduce el nombre-->
+<div *ngIf="modalSwitch" class="modal">
+  <div class="modal-content">
+    <input class="nombreUsuario" type="text" placeholder="Nombre"
+           [(ngModel)]="nombreUsuario">
+  </div>
+  <div class="modal-footer">
+    <button class='btn btn-primary' id="lanzarPartida" (click)="nuevaPalabra()">JUGAR</button>
+    <button class='btn btn-secondary' (click)="closeNameModal()">CANCELAR</button>
+  </div>
+</div>
+
+<!--Modal del apartado de ver resultados-->
+<div *ngIf="modalSwitchJug" class="modal">
+  <div class="modal-content">
+    <div class="titulolistado">
+      <p>Nombre</p>
+      <p>Intentos</p>
+      <p>Ganador</p>
+    </div>
+    <div *ngFor="let partida of partidas" class="resultadostabla">
+      <p style="padding-right: 30px">{{ partida.jugador }}</p>
+      <p style="padding-right: 35px">{{partida.intentos}}</p>
+      <p>{{ partida.winner ? 'Sí' : 'No' }}</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class='btn btn-secondary' (click)="closeJugModal()">ATRAS</button>
+  </div>
+</div>
+
+    <div class="contjugada">
+    <!-- #palabraInput y charInput son para comunicarse directamente con la pagina de TypeScript mediante el ViewChildren  -->
+    <!--  ngFor es un tipo de forEach de HTML -->
+    <!--  item of palabras: palabras es nuestro array, y item es cada palabra con la que vamos a jugar-->
+      <div  #palabraInputs
+              *ngFor="let palabra of palabras; let indicePalabra = index" style="padding: 15px">
+        <!--  ngClass permite elegir con un ternario la clase según la condición asignada  -->
+        <input #charInputs
+                *ngFor="let char of palabra; let indiceLetra = index"
+                [ngClass]="char.clase === 2 ?'verde' : char.clase === 1 ? 'amarillo' : 'blanco'"
+                type="text" maxLength="1" (input)="onInput($event, indiceLetra, indicePalabra)"
+                [(ngModel)]="palabra[indiceLetra].letra"
+                (keydown.backspace)="onDeletePressed(indiceLetra, indicePalabra)"
+                (keydown.enter)="onEnterPressed(palabra[indiceLetra].letra, indiceLetra, indicePalabra)"
+                [disabled]="!palabraMaster || palabra[indiceLetra].disabled" >
+      </div>
+      <hr class="line">
+    </div>
+
+    <hr class="blackline">
+<!--Apartado para la parte de comprobación visual del usuario-->
+    <div fxLayoutAlign="center center" fxLayout="row" id="respuesta" style="padding: 15px">
+      <input *ngFor="let letra of aciertos; let i = index"
+             [ngClass]="letra ? 'verde' : 'blanco'"
+             [(ngModel)]="aciertos[i]" type="text" id="resp1" readonly>
+    </div>
+  </body>
+</html>
+
+

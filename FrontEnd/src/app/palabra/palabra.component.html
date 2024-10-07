@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LA PALABRA</title>
+
+
+</head>
+<body>
+<h1>LA PALABRA</h1>
+<button class = 'btn btn-primary' id="nuevaPartida" (click)="nuevaPalabra()">NUEVA PARTIDA</button>
+<div class ="contjugada">
+  <div class = "container" id="intento1">
+    <input type = "text" maxLength="1" id="char1" [(ngModel)]="char1.letra" [disabled]="(intento1!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char2.focus()" >
+    <input type = "text" maxLength="1" id="char2" [(ngModel)]="char2.letra" [disabled]="(intento1!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char3.focus(); else if (this.value.length != this.getAttribute('maxlength')) char1.focus()">
+    <input type = "text" maxLength="1" id="char3" [(ngModel)]="char3.letra" [disabled]="(intento1!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char4.focus(); else if (this.value.length != this.getAttribute('maxlength')) char2.focus()" >
+    <input type = "text" maxLength="1" id="char4" [(ngModel)]="char4.letra" [disabled]="(intento1!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char5.focus(); else if (this.value.length != this.getAttribute('maxlength')) char3.focus()" >
+    <input type = "text" maxLength="1" id="char5" [(ngModel)]="char5.letra" [disabled]="(intento1!='')" onkeyup="if (this.value.length != this.getAttribute('maxlength')) char4.focus()" (keydown.enter)="onEnterPressed1()" >
+  </div>
+
+  <hr class="line">
+
+  <div class="container" id="intento2" >
+    <input type="text" maxLength="1" id="char6" [(ngModel)]="char6.letra" [disabled]="!intento1 || (intento2!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char7.focus()" >
+    <input type="text" maxLength="1" id="char7" [(ngModel)]="char7.letra" [disabled]="!intento1 || (intento2!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char8.focus(); else if (this.value.length != this.getAttribute('maxlength')) char6.focus()" >
+    <input type="text" maxLength="1" id="char8" [(ngModel)]="char8.letra" [disabled]="!intento1 || (intento2!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char9.focus(); else if (this.value.length != this.getAttribute('maxlength')) char7.focus()" >
+    <input type="text" maxLength="1" id="char9" [(ngModel)]="char9.letra" [disabled]="!intento1 || (intento2!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char10.focus(); else if (this.value.length != this.getAttribute('maxlength')) char8.focus()" >
+    <input type="text" maxLength="1" id="char10" [(ngModel)]="char10.letra" [disabled]="!intento1 || (intento2!='')" onkeyup="if (this.value.length != this.getAttribute('maxlength')) char9.focus()" (keydown.enter)="onEnterPressed2()">
+  </div>
+
+  <hr class="line">
+
+  <div class = "container" id="intento3">
+    <input type = "text" maxLength="1" id="char11" [(ngModel)]="char11.letra" [disabled]="!intento2 || (intento3!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char12.focus()">
+    <input type = "text" maxLength="1" id="char12" [(ngModel)]="char12.letra" [disabled]="!intento2 || (intento3!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char13.focus(); else if (this.value.length != this.getAttribute('maxlength')) char11.focus()">
+    <input type = "text" maxLength="1" id="char13" [(ngModel)]="char13.letra" [disabled]="!intento2 || (intento3!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char14.focus(); else if (this.value.length != this.getAttribute('maxlength')) char12.focus()">
+    <input type = "text" maxLength="1" id="char14" [(ngModel)]="char14.letra" [disabled]="!intento2 || (intento3!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char15.focus(); else if (this.value.length != this.getAttribute('maxlength')) char13.focus()">
+    <input type = "text" maxLength="1" id="char15" [(ngModel)]="char15.letra" [disabled]="!intento2 || (intento3!='')" onkeyup="if (this.value.length != this.getAttribute('maxlength')) char14.focus()" (keydown.enter)="onEnterPressed3()">
+  </div>
+
+  <hr class="line">
+
+  <div class = "container" id="intento4">
+    <input type = "text" maxLength="1" id="char16" [(ngModel)]="char16.letra" [disabled]="!intento3 || (intento4!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char17.focus()">
+    <input type = "text" maxLength="1" id="char17" [(ngModel)]="char17.letra" [disabled]="!intento3 || (intento4!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char18.focus(); else if (this.value.length != this.getAttribute('maxlength')) char16.focus()">
+    <input type = "text" maxLength="1" id="char18" [(ngModel)]="char18.letra" [disabled]="!intento3 || (intento4!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char19.focus(); else if (this.value.length != this.getAttribute('maxlength')) char17.focus()">
+    <input type = "text" maxLength="1" id="char19" [(ngModel)]="char19.letra" [disabled]="!intento3 || (intento4!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char20.focus(); else if (this.value.length != this.getAttribute('maxlength')) char18.focus()">
+    <input type = "text" maxLength="1" id="char20" [(ngModel)]="char20.letra" [disabled]="!intento3 || (intento4!='')" onkeyup="if (this.value.length != this.getAttribute('maxlength')) char19.focus()" (keydown.enter)="onEnterPressed4()">
+  </div>
+
+  <hr class="line">
+
+  <div class = "container" id="intento5">
+    <input type = "text" maxLength="1" id="char21" [(ngModel)]="char21.letra" [disabled]="!intento4 || (intento5!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char22.focus()">
+    <input type = "text" maxLength="1" id="char22" [(ngModel)]="char22.letra" [disabled]="!intento4 || (intento5!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char23.focus(); else if (this.value.length != this.getAttribute('maxlength')) char21.focus()">
+    <input type = "text" maxLength="1" id="char23" [(ngModel)]="char23.letra" [disabled]="!intento4 || (intento5!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char24.focus(); else if (this.value.length != this.getAttribute('maxlength')) char22.focus()">
+    <input type = "text" maxLength="1" id="char24" [(ngModel)]="char24.letra" [disabled]="!intento4 || (intento5!='')" onkeyup="if (this.value.length == this.getAttribute('maxlength')) char25.focus(); else if (this.value.length != this.getAttribute('maxlength')) char23.focus()">
+    <input type = "text" maxLength="1" id="char25" [(ngModel)]="char25.letra" [disabled]="!intento4 || (intento5!='')" onkeyup="if (this.value.length != this.getAttribute('maxlength')) char24.focus()" (keydown.enter)="onEnterPressed5()">
+  </div>
+</div>
+
+<hr class="blackline">
+
+<div class = "container" id="respuesta">
+  <input type = "text" id="resp1"  readonly >
+  <input type = "text" id="resp2"  readonly >
+  <input type = "text" id="resp3"  readonly >
+  <input type = "text" id="resp4"  readonly >
+  <input type = "text" id="resp5"  readonly >
+</div>
+</body>
+</html>
+
