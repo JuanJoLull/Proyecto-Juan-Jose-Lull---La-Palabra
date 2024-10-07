@@ -1,0 +1,9 @@
+com/example/proyectojuegos/repository/JugadorRepository.class
+com/example/proyectojuegos/models/Partida.class
+com/example/proyectojuegos/repository/PartidaRepository.class
+com/example/proyectojuegos/servicio/JugadorServicio.class
+com/example/proyectojuegos/ProyectoJuegos.class
+com/example/proyectojuegos/models/Jugador.class
+com/example/proyectojuegos/servicio/PartidaServicio.class
+com/example/proyectojuegos/controller/JugadorController.class
+com/example/proyectojuegos/controller/PartidaController.class

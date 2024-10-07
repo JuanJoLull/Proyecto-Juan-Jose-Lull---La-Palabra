@@ -1,0 +1,13 @@
+{
+  "configurations": [    
+    {
+      "type": "java",
+      "name": "Deploy tomcat",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "com.example.proyectojuegos.ProyectoJuegos",
+      "projectName": "proyecto-juegos",     
+    }
+  ]
+}
